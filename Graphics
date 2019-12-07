@@ -1,1 +1,49 @@
-import death
+from tkinter import*
+from tkinter import font
+from tkinter import simpledialog
+from tkinter import messagebox
+
+
+master=Tk()
+
+def quit_code():
+    master.destroy()
+
+
+choose_dif=StringVar()
+choose_dif.set("Choose Your Difficulty")
+#difficulties
+#def easy():
+    #test1=Tk()
+
+
+
+
+
+def medium():
+    test2=Tk()
+    return     
+
+
+
+
+#def hard():
+    #test3=Tk()
+
+
+#randomize problems
+#def 
+
+
+
+
+
+#buttons
+#ez=Button(master, text="Easy ", command=easy)
+md=Button(master, text="Medium ", command=medium, bg='green', fg='black', padx=100, pady=5).grid(row=1, column=0)
+#lg=Button(master, text="Hard ", command=hard)
+
+#labels
+Label(master, textvariable=choose_dif, bg='green', fg='yellow').grid(row=0, column=0)
+
+#frame
