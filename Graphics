@@ -1,49 +1,109 @@
-from tkinter import*
+from tkinter import *
 from tkinter import font
-from tkinter import simpledialog
-from tkinter import messagebox
+import time
+import random
 
+master = Tk()
 
-master=Tk()
+#Functions
 
-def quit_code():
+def quit_game():
     master.destroy()
 
+#Difficulties
 
-choose_dif=StringVar()
-choose_dif.set("Choose Your Difficulty")
-#difficulties
-#def easy():
-    #test1=Tk()
+def easy_set():
+    global ps
+    global dif
+    ps=1
+    dif.set("Difficulty: Easy")
+    Choose_mult=Button(master, text="Easy Multiplication").grid(row=2,column=1)
+    Choose_divt=Button(master, text="Easy Division").grid(row=3,column=1)
+    Choose_addt=Button(master, text="Easy Addition").grid(row=4,column=1)
+    Choose_subt=Button(master, text="Easy Subtraction").grid(row=5,column=1)
+    #quit_game()
+def med_set():
+    global ps
+    global dif
+    ps=2
+    dif.set("Difficulty: Medium")
+    Choose_mult=Button(master, text="Medium Multiplication").grid(row=2,column=1)
+    Choose_divt=Button(master, text="Medium Division").grid(row=3,column=1)
+    Choose_addt=Button(master, text="Medium Addition").grid(row=4,column=1)
+    Choose_subt=Button(master, text="Medium Subtraction").grid(row=5,column=1)
+    Md.config(state=DISABLED)
+    Hd.config(state=DISABLED)
+    #quit_game()
+def hard_set():
+    global ps
+    global dif
+    ps=3
+    dif.set("Difficulty: Hard")
+    Choose_mult=Button(master, text="Hard Multiplication").grid(row=2,column=1)
+    Choose_divt=Button(master, text="Hard Division").grid(row=3,column=1)
+    Choose_addt=Button(master, text="Hard Addition").grid(row=4,column=1)
+    Choose_subt=Button(master, text="Hard Subtraction").grid(row=5,column=1)
+    #quit_game()
+
+#Math Problem Types
+def multp():
+    global ps
+    #if ps==1:
+        
+    #elif ps==2:
+        
+    #elif ps==3:
+        
+    return True
+def divp():
+    global ps
+    #if ps==1:
+        
+    #elif ps==2:
+        
+    #elif ps==3:
+    return True
+def addp():
+    global ps
+    #if ps==1:
+        
+    #elif ps==2:
+        
+    #elif ps==3:
+    return True
+def subp():
+    global ps
+    #if ps==1:
+        
+    #elif ps==2:
+        
+    #elif ps==3:
+    return True
+
+#Graphics
+
+#Difficulties
+dif=StringVar()
+dif.set("Select Your Difficulty")
+dif_choosen=Label(master, textvariable=dif,bg='gray',fg='white').grid(row=0,column=1)
+#ez_desc=Label(master, text="
+#med_desc=Label(master, text="
+#hard_desc=(master, text="
+Ez=Button(master, text="Easy", command=easy_set,bg='green',).grid(row=1,column=0)
+Md=Button(master, text="Medium", command=med_set,bg='yellow').grid(row=1,column=1)
+Hd=Button(master, text="Hard", command=hard_set,bg='red',).grid(row=1,column=2)
+
+
+#Math Problems
+pt=StringVar()
+pt.set("Select Your Problem ps Topic")
+
+    
 
 
 
 
 
-def medium():
-    test2=Tk()
-    return     
 
-
-
-
-#def hard():
-    #test3=Tk()
-
-
-#randomize problems
-#def 
-
-
-
-
-
-#buttons
-#ez=Button(master, text="Easy ", command=easy)
-md=Button(master, text="Medium ", command=medium, bg='green', fg='black', padx=100, pady=5).grid(row=1, column=0)
-#lg=Button(master, text="Hard ", command=hard)
-
-#labels
-Label(master, textvariable=choose_dif, bg='green', fg='yellow').grid(row=0, column=0)
-
-#frame
+master.config(bg='black')
+mainloop()
