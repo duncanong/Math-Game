@@ -5,7 +5,7 @@ import random
 
 master = Tk()
 
-
+records=dict()
 #Fonts
 #helv36=
 
@@ -22,32 +22,48 @@ def easy_set():
     global dif
     ps=1
     dif.set("Difficulty: Easy")
-    Choose_mult=Button(master, text="Easy Multiplication", command=mp, bg='orange').grid(row=4,column=1)
-    Choose_divt=Button(master, text="Easy Division", command=dp, bg='red').grid(row=5,column=1)
-    Choose_addt=Button(master, text="Easy Addition",command=ap, bg='green').grid(row=2,column=1)
-    Choose_subt=Button(master, text="Easy Subtraction", command=sp, bg='yellow').grid(row=3,column=1)
+    Choose_mult=Button(master, text="Easy Multiplication", command=mp, bg='orange')
+    Choose_mult.grid(row=4,column=1, pady=5)
+    Choose_divt=Button(master, text="Easy Division", command=dp, bg='red')
+    Choose_divt.grid(row=5,column=1, pady=5)
+    Choose_addt=Button(master, text="Easy Addition",command=ap, bg='green')
+    Choose_addt.grid(row=2,column=1, pady=5)
+    Choose_subt=Button(master, text="Easy Subtraction", command=sp, bg='yellow')
+    Choose_subt.grid(row=3,column=1, pady=5)
+    Md.config(state=DISABLED)
+    Hd.config(state=DISABLED)
     #quit_game()
 def med_set():
     global ps
     global dif
     ps=2
     dif.set("Difficulty: Medium")
-    Choose_mult=Button(master, text="Medium Multiplication", command=mp, bg='orange').grid(row=4,column=1)
-    Choose_divt=Button(master, text="Medium Division", command=dp, bg='red').grid(row=5,column=1)
-    Choose_addt=Button(master, text="Medium Addition", command=ap, bg='green').grid(row=2,column=1)
-    Choose_subt=Button(master, text="Medium Subtraction", command=sp, bg='yellow').grid(row=3,column=1)
-    #Ez.config(state=DISABLED)
-    #Hd.config(state=DISABLED)
+    Choose_mult=Button(master, text="Medium Multiplication", command=mp, bg='orange')
+    Choose_mult.grid(row=4,column=1)
+    Choose_divt=Button(master, text="Medium Division", command=dp, bg='red')
+    Choose_divt.grid(row=5,column=1)
+    Choose_addt=Button(master, text="Medium Addition", command=ap, bg='green')
+    Choose_addt.grid(row=2,column=1)
+    Choose_subt=Button(master, text="Medium Subtraction", command=sp, bg='yellow')
+    Choose_subt.grid(row=3,column=1)
+    Ez.config(state=DISABLED)
+    Hd.config(state=DISABLED)
     #quit_game()
 def hard_set():
     global ps
     global dif
     ps=3
     dif.set("Difficulty: Hard")
-    Choose_mult=Button(master, text="Hard Multiplication",command=mp, bg='orange').grid(row=4,column=1)
-    Choose_divt=Button(master, text="Hard Division", command=dp, bg='red').grid(row=5,column=1)
-    Choose_addt=Button(master, text="Hard Addition", command=ap, bg='green').grid(row=2,column=1)
-    Choose_subt=Button(master, text="Hard Subtraction",command=sp, bg='yellow').grid(row=3,column=1)
+    Choose_mult=Button(master, text="Hard Multiplication",command=mp, bg='orange')
+    Choose_mult.grid(row=4,column=1)
+    Choose_divt=Button(master, text="Hard Division", command=dp, bg='red')
+    Choose_divt.grid(row=5,column=1)
+    Choose_addt=Button(master, text="Hard Addition", command=ap, bg='green')
+    Choose_addt.grid(row=2,column=1)
+    Choose_subt=Button(master, text="Hard Subtraction",command=sp, bg='yellow')
+    Choose_subt.grid(row=3,column=1)
+    Md.config(state=DISABLED)
+    Ez.config(state=DISABLED)
     #quit_game()
 
 #Math Problem Types
@@ -60,20 +76,37 @@ def mp():
     global ans
     global inp
     global ps
-    if ps==1:
-        a=random.randint(1,10)
-        b=random.randint(1,10)
-        prob=StringVar()
-        prob.set(str(a)+" × "+str(b)+" = ")
-        ans=a*b
-        Pset=Label(master, textvariable=prob,bg='green').grid(row=6, column=0, padx=5)
-        inp=Entry(master, text="Enter Your Answer Here",bg='gray').grid(row=6,column=1)
-        sub_ans=Button(master, text="Submit Answer", command=check_answer, bg='red').grid(row=6, column=2)
-    #elif ps==2:
+    global Pset
+    global sub_ans
+    global qnum
+    global pt
+    global score
+    qnum=1
+    score=0
+    pt="m"
+    Choose_mult.config(state=DISABLED)
+    Choose_divt.config(state=DISABLED)
+    Choose_addt.config(state=DISABLED)
+    Choose_subt.config(state=DISABLED)
+    if qnum<=20:
+        if ps==1:
+            a=random.randint(1,10)
+            b=random.randint(1,10)
+            prob=StringVar()
+            prob.set(str(a)+" × "+str(b)+" = ")
+            ans=(a*b)
+            Pset=Label(master, textvariable=prob,bg='green')
+            Pset.grid(row=6, column=0, padx=5)
+            inp=Entry(master, text="Enter Your Answer Here",bg='gray')
+            inp.grid(row=6,column=1)
+            sub_ans=Button(master, text="Submit Answer", command=check_answer, bg='red')
+            sub_ans.grid(row=6, column=2, padx=5)
+        #elif ps==2:
         
-    #elif ps==3:
+        #elif ps==3:
+
+    else:
         
-    return True
 def dp():
     global ps
     #if ps==1:
@@ -81,7 +114,7 @@ def dp():
     #elif ps==2:
         
     #elif ps==3:
-    return True
+
 def ap():
     global ps
     #if ps==1:
@@ -89,7 +122,7 @@ def ap():
     #elif ps==2:
         
     #elif ps==3:
-    return True
+
 def sp():
     global ps
     #if ps==1:
@@ -97,15 +130,48 @@ def sp():
     #elif ps==2:
         
     #elif ps==3:
-    return True
+
 
 def check_answer():
     global ans
     global inp
-    if ans==inp:
-        Cor=Label(master, text="You Are Correct!", bg='green').grid(row=7, column=0)
+    global attempt
+    global Pset
+    global sub_ans
+    global count
+    global Cor
+    global Fal
+    attempt=inp.get()
+    if str(ans)==str(attempt):
+        Cor=Label(master, text="You Are Correct!", bg='green')
+        Cor.grid(row=7, column=1, padx=5)
+        count+=1
     else:
-        Fal=Label(master, text="You Are Incorrect!", bg='red').grid(row=7, column=1)
+        Fal=Label(master, text=("You Are Incorrect! Correct Answer is "+str(ans)), bg='red')
+        Fal.grid(row=7, column=1)
+    Next=Button(master, text="Next Problem", command=next_turn, bg='black', fg='white')
+    Next.grid(row=8, column=3)
+
+def next_turn():
+    global Pset
+    global Cor
+    global Fal
+    global attempt
+    global ans
+    Pset.config(bg='black', fg='black')
+    if str(attempt)==str(ans):Cor.config(bg='black', fg='black')
+    else:Fal.config(bg='black', fg='black')
+    if pt=="m":
+        mp()
+    elif pt=="d":
+        dp()
+    elif pt=="a":
+        ap()
+    elif pt=="s":
+        sp()
+
+def show_score():
+    
 
 #Graphics
 
@@ -116,14 +182,17 @@ dif_choosen=Label(master, textvariable=dif,bg='black',fg='white').grid(row=0,col
 #ez_desc=Label(master, text="
 #med_desc=Label(master, text="
 #hard_desc=(master, text="
-Ez=Button(master, text="Easy", command=easy_set,bg='green',).grid(row=1,column=0)
-Md=Button(master, text="Medium", command=med_set,bg='yellow').grid(row=1,column=1)
-Hd=Button(master, text="Hard", command=hard_set,bg='red',).grid(row=1,column=2)
+Ez=Button(master, text="Easy", command=easy_set,bg='green',)
+Ez.grid(row=1,column=0)
+Md=Button(master, text="Medium", command=med_set,bg='yellow')
+Md.grid(row=1,column=1)
+Hd=Button(master, text="Hard", command=hard_set,bg='red',)
+Hd.grid(row=1,column=2)
 
 
 #Math Problems
 pt=StringVar()
-pt.set("Select Your Problem ps Topic")
+pt.set("Select Your Problem Topic")
 
     
 
@@ -134,3 +203,4 @@ pt.set("Select Your Problem ps Topic")
 
 master.config(bg='black')
 mainloop()
+
